@@ -23,7 +23,7 @@ RUN chmod +x /actions-runner/install_actions.sh \
 COPY token.sh entrypoint.sh app_token.sh /
 RUN chmod +x /token.sh /entrypoint.sh /app_token.sh
 RUN echo "${APP_PK}" > /app_pk.pem
-COPY /app_pk.pem /
+
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["./bin/Runner.Listener", "run", "--startuptype", "service"]
