@@ -42,6 +42,8 @@ jobs:
       - name: Build and deploy Local Runner For GitHub
         uses: azure/container-apps-deploy-action@v2
         with:
+          appSourcePath: ${{ github.workspace }} 
+          dockerfilePath: Dockerfile
           environmentVariables: RUNNER_SCOPE=org
                                 ORG_NAME=TandemCare
                                 APP_PRIVATE_KEY=${{ secrets.HEMI_GITHUB_APP_PK }}
