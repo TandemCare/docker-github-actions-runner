@@ -32,7 +32,9 @@ jobs:
       - name: Azure Login
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.TEALCOMPAPIDEV_AZURE_CREDENTIALS }}
+          client-id: ${{ secrets.RUNNERTEST_AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.RUNNERTEST_AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.RUNNERTEST_AZURE_SUBSCRIPTION_ID }}
 
       - name: Build and deploy Local Runner For GitHub
         uses: azure/container-apps-deploy-action@v2
@@ -44,8 +46,8 @@ jobs:
                                 TZ="America/New_York"
                                 
           registryUrl: tealcompexternal3a4adc.azurecr.io
-          registryUsername: ${{ secrets.TEALCOMPAPIDEV_REGISTRY_USERNAME }}
-          registryPassword: ${{ secrets.TEALCOMPAPIDEV_REGISTRY_PASSWORD }}
+          registryUsername: ${{ secrets.RUNNERTEST_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.RUNNERTEST_REGISTRY_PASSWORD }}
           imageToBuild: tealcompexternal3a4adc.azurecr.io/git-selfhosted:runner-base
           containerAppName: github-hemi-builder
           resourceGroup: harlowe-tealcomp
