@@ -61,7 +61,7 @@ base64url() {
 }
 
 rs256_sign() {
-    openssl dgst -binary -sha256 -sign <(echo "$1")
+    openssl dgst -binary -sha256 -sign pk.pem
 }
 
 request_access_token() {
@@ -85,5 +85,8 @@ request_access_token() {
         "${access_token_url}" | \
         jq --raw-output .token
 }
+
+#Store pk in file
+echo $1 >> pk.pem
 
 request_access_token
