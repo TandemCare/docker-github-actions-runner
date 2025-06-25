@@ -46,7 +46,7 @@ jobs:
           dockerfilePath: Dockerfile
           environmentVariables: RUNNER_SCOPE=org
                                 ORG_NAME=TandemCare
-                                APP_PRIVATE_KEY=|-${{ secrets.HEMI_GITHUB_APP_PK }}
+                                APP_PRIVATE_KEY="${{ secrets.HEMI_GITHUB_APP_PK }}"
                                 APP_ID=${{ secrets.HEMI_GITHUB_APP_ID }}
                                 TZ="America/New_York"
                                 
