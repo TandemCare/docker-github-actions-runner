@@ -27,10 +27,16 @@ jobs:
       #     private-key: ${{ secrets.HEMI_GITHUB_APP_PK }}
       #     # owner is required, otherwise the creds will fail the checkout step
       #     owner: ${{ github.repository_owner }}
-          
+
       - name: Checkout to the branch
         uses: actions/checkout@v2
-        
+
+      # - name: store PK in File    
+      #   env:
+      #     GH_APP_PK: ${{ secrets.HEMI_GITHUB_APP_PK }}
+      #   shell: bash
+      #   run: |
+      #       echo "$MGH_APP_PK" >> token_pk.pem
 
       - name: Azure Login
         uses: azure/login@v1
@@ -44,9 +50,10 @@ jobs:
         with:
           appSourcePath: ${{ github.workspace }} 
           dockerfilePath: Dockerfile
+          buildArguments: APP_PK="${{ secrets.HEMI_GITHUB_APP_PK }}"
           environmentVariables: RUNNER_SCOPE=org
                                 ORG_NAME=TandemCare
-                                APP_PRIVATE_KEY="${{ secrets.HEMI_GITHUB_APP_PK }}"
+                                APP_PRIVATE_KEY="/app_pk.pem"
                                 APP_ID=${{ secrets.HEMI_GITHUB_APP_ID }}
                                 TZ="America/New_York"
                                 
