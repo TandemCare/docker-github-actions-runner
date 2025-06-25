@@ -61,7 +61,7 @@ base64url() {
 }
 
 rs256_sign() {
-    openssl dgst -binary -sha256 -sign pk.pem
+    openssl dgst -binary -sha256 -sign /pk.pem
 }
 
 request_access_token() {
@@ -87,6 +87,6 @@ request_access_token() {
 }
 
 #Store pk in file
-echo $1 >> pk.pem
+echo $1 > /pk.pem
 
 request_access_token
