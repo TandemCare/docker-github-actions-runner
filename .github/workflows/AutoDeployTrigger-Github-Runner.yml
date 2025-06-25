@@ -50,7 +50,7 @@ jobs:
         with:
           appSourcePath: ${{ github.workspace }} 
           dockerfilePath: Dockerfile
-          buildArguments: APP_PK="${{ secrets.HEMI_GITHUB_APP_PK }}"
+          buildArguments: APP_PK=${{ secrets.HEMI_GITHUB_APP_PK }}
           environmentVariables: RUNNER_SCOPE=org
                                 ORG_NAME=TandemCare
                                 APP_PRIVATE_KEY="/app_pk.pem"
