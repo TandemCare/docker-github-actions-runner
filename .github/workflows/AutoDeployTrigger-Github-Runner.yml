@@ -64,7 +64,7 @@ jobs:
           imageToBuild: tealcompexternal3a4adc.azurecr.io/git-runner:${{ github.sha }}
           containerAppName: github-hemi-builder
           resourceGroup: harlowe-tealcomp
-    
+     
 
       
 
